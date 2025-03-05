@@ -2,20 +2,23 @@ import { test, expect } from '@playwright/test';
 
 import logindata from "../testData/login.json"
 
+const creds = ["Admin", "admin123"]
 test.only('Verify login with vaid credentials', async ({ page }) => {
 
 
   await page.goto("/web/index.php/auth/login");
   
-  await page.locator("//input[@placeholder='Username']").fill(logindata.username);
+  await page.locator('//input[@placeholder="Username"]').fill(creds[0]);
 
-  await page.locator("input[type='password']").fill(logindata.password);
+  await page.locator("input[type='password']").type(creds[1]);
 
   await page.locator("button[type='submit']").click()
 
   await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
   
 //  await page.close()
+
+ //ordernumber = "3546546"
 
 })
 

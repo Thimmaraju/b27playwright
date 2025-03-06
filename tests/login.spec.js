@@ -5,6 +5,13 @@ import logindata from "../testData/login.json"
 const creds = ["Admin", "admin123"]
 test.only('Verify login with vaid credentials', async ({ page }) => {
 
+  const menuitems = {
+
+    menu1 : "Admin",
+    menu2 : "PIM",
+    menu3 : "Leave",
+    menu4 : "Time"
+}
 
   await page.goto("/web/index.php/auth/login");
   
@@ -15,7 +22,14 @@ test.only('Verify login with vaid credentials', async ({ page }) => {
   await page.locator("button[type='submit']").click()
 
   await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
+
   
+// for(let item in menuitems){
+  
+//   await expect(page.locator('span[class="oxd-text oxd-text--span oxd-main-menu-item--name"]')).toHaveText(menuitems[item])
+
+
+// }
 //  await page.close()
 
  //ordernumber = "3546546"

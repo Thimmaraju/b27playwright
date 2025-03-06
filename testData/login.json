@@ -3,6 +3,10 @@
     "username" : "Admin",
     "password" : "admin123",
     "wrongusername" : "ewbfwhberhjf",
-    "wrongpassword" : "jghrfbhu"
+    "wrongpassword" : "jghrfbhu",
+    "creds" :{
+
+        "username" : "dfhgbjn"
+    }
 
 }

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import logindata from "../testData/login.json"
 
 const creds = ["Admin", "admin123"]
-test.only('Verify login with vaid credentials', async ({ page }) => {
+test('Verify login with vaid credentials', async ({ page }) => {
 
   const menuitems = {
 
@@ -54,15 +54,16 @@ test('Verify login with vaid username and Invalid password', async ({ page }) =>
 
   test('Verify login with invaid username and valid password', async ({ page }) => {
 
-
+     const username = "Admin"
     await page.goto("/web/index.php/auth/login")
     
-    await page.locator("//input[@placeholder='Username']").fill(logindata.wrongusername)
+    await page.locator("//input[@placeholder='Username']").fill(username)
   
     await page.locator("input[type='password']").fill(logindata.password)
   
     await page.locator("button[type='submit']").click()
-  
+    
+    await page.locator("//input[@placeholder='Username']").fill(username)
     await expect(page.locator("//p[text()='Invalid credentials']")).toBeVisible()
   
   })
@@ -70,13 +71,15 @@ test('Verify login with vaid username and Invalid password', async ({ page }) =>
 
   test('Verify login with invaid username and invalid password', async ({ page }) => {
 
+  
+
   // await page.setViewportSize({
   //   width: 375,
   //   height: 667,
   // })
     await page.goto("/web/index.php/auth/login")
     
-    await page.locator("//input[@placeholder='Username']").fill(logindata.wrongusername)
+    await page.locator("//input[@placeholder='Username']").fill(username)
   
     await page.locator("input[type='password']").fill(logindata.wrongpassword)
   

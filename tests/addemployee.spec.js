@@ -1,20 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-import data from "../testData/addemployee.json"
-
 
 
     test('Verify Admin Can add employee', async ({ page }) => {
  
-        const firstname = "chaitra"
-        const lastname = "J"
-    
-       const  employeedetails = {
-    
-            firstname : "Chaitra",
-            lastname : "J"
-        }
-    
     
        const  empdata = ["Chaitra", "J", 34, "34"]
     

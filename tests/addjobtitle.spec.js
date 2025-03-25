@@ -19,12 +19,14 @@ for(let jobtitle in jobtitles){
       
   // launch the url 
   await page.goto("/web/index.php/auth/login")
+
+  await page.waitForTimeout(3000)
   
   //filling username 
-  await page.locator('input[class="oxd-input oxd-input--active"]').first().fill(data.username)
-  
+  await page.locator("input[name='username']").fill("Admin") //60sec 
+    
   //filling password
-  await page.locator('input[class="oxd-input oxd-input--active"]').last().fill(data.password)
+  await page.locator("input[type='password']").fill("admin123")
 
 
   // or 
@@ -38,7 +40,7 @@ for(let jobtitle in jobtitles){
   await page.locator("//button[@type='submit']").click()
   
   //Whether we are navigated to dashbaord page or not 
-  await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index", { timeout: 30_000 })
+  await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
   
   await page.locator("//span[text()='Admin']").click()
   

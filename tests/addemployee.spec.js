@@ -9,7 +9,7 @@ import data from "../testData/addemployee.json"
         const firstname = "chaitra"
         const lastname = "J"
     
-        employeedetails = {
+       const  employeedetails = {
     
             firstname : "Chaitra",
             lastname : "J"

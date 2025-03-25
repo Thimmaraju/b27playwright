@@ -2,8 +2,16 @@ import { test, expect } from '@playwright/test';
 
 import logindata from "../testData/login.json"
 
+let page
+test.beforeEach( async ({browser})=>{
+
+  page = await browser.newPage()
+  await page.goto("/web/index.php/auth/login");
+
+})
+
 const creds = ["Admin", "admin123"]
-test('Verify login with vaid credentials', async ({ page }) => {
+test('Verify login with vaid credentials', async () => {
 
   const menuitems = {
 
@@ -13,7 +21,7 @@ test('Verify login with vaid credentials', async ({ page }) => {
     menu4 : "Time"
 }
 
-  await page.goto("/web/index.php/auth/login");
+
   
   await page.locator('//input[@placeholder="Username"]').fill(creds[0]);
 
@@ -37,10 +45,8 @@ test('Verify login with vaid credentials', async ({ page }) => {
 })
 
 
-test('Verify login with vaid username and Invalid password', async ({ page }) => {
+test('Verify login with vaid username and Invalid password', async () => {
 
-
-    await page.goto("/web/index.php/auth/login")
     
     await page.locator("//input[@placeholder='Username']").fill(logindata.username)
   
@@ -52,34 +58,31 @@ test('Verify login with vaid username and Invalid password', async ({ page }) =>
   
   })
 
-  test('Verify login with invaid username and valid password', async ({ page }) => {
+  test('Verify login with invaid username and valid password', async () => {
 
-     const username = "Admin"
-    await page.goto("/web/index.php/auth/login")
-    
+     const username = "hjkjggy"
+
     await page.locator("//input[@placeholder='Username']").fill(username)
   
     await page.locator("input[type='password']").fill(logindata.password)
   
     await page.locator("button[type='submit']").click()
     
-    await page.locator("//input[@placeholder='Username']").fill(username)
     await expect(page.locator("//p[text()='Invalid credentials']")).toBeVisible()
   
   })
 
 
-  test('Verify login with invaid username and invalid password', async ({ page }) => {
+  test('Verify login with invaid username and invalid password', async () => {
 
   
 
   // await page.setViewportSize({
   //   width: 375,
   //   height: 667,
-  // })
-    await page.goto("/web/index.php/auth/login")
+  // }
     
-    await page.locator("//input[@placeholder='Username']").fill(username)
+    await page.locator("//input[@placeholder='Username']").fill("guygyujg")
   
     await page.locator("input[type='password']").fill(logindata.wrongpassword)
   

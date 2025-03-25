@@ -15,7 +15,7 @@ import { test, expect } from '@playwright/test';
 
 
 
-test("Based on BrowserName run different script", async ({ page, browserName }) => {
+test("Based on BrowserName run different script", {tag: "@smoke"}, async ({ page, browserName }) => {
 
     switch (browserName) {
         case "chromium":

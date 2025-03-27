@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 import {LoginPage } from '../pageobjects/LoginPage';
 import {DashboardPage} from '../pageobjects/DashboardPage';
-import {EmployeePage} from '../pageobjects/EmployeePage';
+import {EmployeePage} from '../pageobjects/PIM/EmployeePage';
 
 
 test('Verify Admin Can Add Employee', async ({ page }) => {
@@ -13,12 +13,12 @@ test('Verify Admin Can Add Employee', async ({ page }) => {
     const empData = ["Chaitra", "J"];
 
     // Launch the URL
-    await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+    await loginPage.launchApplication()
 
     // Perform login
     await loginPage.login("Admin", "admin123");
-    await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
-
+    
+    await loginPage.verifyLoginSuccess()
     // Navigate to PIM and add employee
     await dashboardPage.navigateToPIM();
     await employeePage.addEmployee(empData[0], empData[1]);

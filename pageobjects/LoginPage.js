@@ -1,6 +1,5 @@
 import { expect } from "@playwright/test";
-
-exports.LoginPage = class LoginPage {
+ exports.LoginPage = class LoginPage {
     constructor(page) {
         this.page = page;
         this.usernameField = page.locator("input[name='username']");

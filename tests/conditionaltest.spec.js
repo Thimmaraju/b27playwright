@@ -1,18 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-// test('has title', async ({ page, browserName }) => {
+test("Based on BrowserName skip", async ({ page, browserName }) => {
 
-//     test.skip(browserName == "chromium")
+    test.skip(browserName == 'chromium', 'Only relevant for other bowsers');
 
-//         await page.goto('https://playwright.dev/');
-
-//         // Expect a title "to contain" a substring.
-//         await expect(page).toHaveTitle(/Playwright/);
+    await page.goto("https://the-internet.herokuapp.com/disappearing_elements");
 
 
-
-// });
-
+})
 
 
 test("Based on BrowserName run different script", {tag: "@smoke"}, async ({ page, browserName }) => {

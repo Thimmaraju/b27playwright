@@ -19,7 +19,7 @@ import { test, expect } from '@playwright/test';
     await page.locator("button[type='submit']").click()
     
     //Whether we are navigated to dashbaord page or not 
-    await expect(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
+    await expect.soft(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
     
     // click on PIM
     await page.locator('//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a').click()

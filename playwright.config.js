@@ -37,7 +37,7 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
-    testIdAttribute: 'aria-label',
+    //testIdAttribute: 'aria-label',
     baseURL: "https://opensource-demo.orangehrmlive.com",
 
     //baseURL : "https://www.qa.flipkart.com",

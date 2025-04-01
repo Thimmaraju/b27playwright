@@ -16,7 +16,14 @@ test.describe('Automation - Working With Elements', () => {
 
         await page.goto('https://www.wikipedia.org/')
 
+        await expect.soft(page.locator("//a")).toHaveCount(370)
+
+        // await page.locator('[data-jsl10n="commons.name"]').click()
+
+        // or 
+
         await page.click('[data-jsl10n="commons.name"]')
+      
         await page.waitForTimeout(5000)
 
         await expect(page).toHaveURL('https://commons.wikimedia.org/wiki/Main_Page')

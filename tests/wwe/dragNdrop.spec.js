@@ -11,6 +11,8 @@ test.describe('Automation - Working With Elements', () => {
 
         // await page.locator('#menu-hamburger').dragTo(page.locator('#plate-items'))
 
+        // await page.locator('#menu-ice-cream').dragTo(page.locator('#plate-items'))
+
         // await page.waitForTimeout(5000)
 
         const sourceFriedChicken = await page.locator('#menu-fried-chicken');

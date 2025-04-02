@@ -1,8 +1,9 @@
-const {  test } = require('@playwright/test');
+const {  test, expect } = require('@playwright/test');
 
 test.describe('Automation - Working With Elements', () => {
 
-  test('handle tabs', async ({ page }) => {
+  test('handle tabs - example 1', async ({ page }) => {
+
     await page.goto('https://the-internet.herokuapp.com/windows');
 
     const [newTab] = await Promise.all([
@@ -33,6 +34,8 @@ test.describe('Automation - Working With Elements', () => {
     const newPagePromise = page.waitForEvent('popup');
     const newPage = await newPagePromise;
     await newPage.waitForLoadState();
+
+   await expect(newPage.locator('.example>h3')).toHaveText("New Window")
 
     const textvalue = await newPage.locator('.example>h3').textContent();
 

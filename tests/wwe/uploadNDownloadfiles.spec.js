@@ -7,18 +7,19 @@ test.describe('Automation - Working With Elements', () => {
 
         await page.goto('https://the-internet.herokuapp.com/upload')
 
-        await page.locator('#file-upload').setInputFiles('./testData/files/24. Example Defect.png')
-
-        //Import 
+        await page.locator('#file-upload').setInputFiles('./testData/files/20. Test Design techniques.png')
 
         await page.locator('#file-submit').click()
 
         await page.waitForTimeout(5000)
 
+        //Import 
+
+
     })
 
 
-    test.skip('Playwright Test Case - upload file example 2 ', async ({ page }) => {
+    test('Playwright Test Case - upload file example 2 ', async ({ page }) => {
 
         await page.goto('https://cgi-lib.berkeley.edu/ex/fup.html')
 
@@ -40,10 +41,10 @@ test.describe('Automation - Working With Elements', () => {
         //     './testData/files/24. Example Defect.png'
         // ])
 
-        await page.locator('input[type="file"]').setInputFiles(['./testData/files/21. Test Design techniques.png', './testData/files/24. Example Defect.png'])
+        await page.locator('input[type="file"]').setInputFiles(['./testData/files/20. Test Design techniques.png', './testData/files/11. Seven-Principles.png'])
 
-        await expect(page.locator('p.name').nth(0)).toHaveText('21. Test Design techniques.png')
-        await expect(page.locator('p.name').nth(1)).toHaveText('24. Example Defect.png')
+        await expect(page.locator('p.name').nth(0)).toHaveText('20. Test Design techniques.png')
+        await expect(page.locator('p.name').nth(1)).toHaveText('11. Seven-Principles.png')
 
         await page.waitForTimeout(5000)
 
@@ -54,18 +55,20 @@ test.describe('Automation - Working With Elements', () => {
 
         const [download] = await Promise.all([
             page.waitForEvent('download'),
-            page.locator('text=test.jpg').click()
+            page.locator("//a[text()='test.png']").click()
         ]);
 
         const suggestedFileName = download.suggestedFilename()
         const filePath = 'downloads/' + suggestedFileName
         await download.saveAs(filePath)
-        expect(fs.existsSync(filePath)).toBeTruthy()
+        expect(fs.existsSync(filePath)).toBeTruthy() // whether file is downloaded or not 
+
+        //export files 
     })
 
     test('Download Multiple files and assert', async ({ page }) => {
         await page.goto('https://the-internet.herokuapp.com/download')
-        const fileNames = ["Cat.jpg", "data-flow.png"]
+        const fileNames = ["tiger.jpg", "infamous.jpeg"]
 
 
         for (const fileName of fileNames) {
@@ -83,7 +86,7 @@ test.describe('Automation - Working With Elements', () => {
     test('Direct Download and assert', async ({ page }) => {
 
         // Define the image URL
-        const imageUrl = 'https://cricfit.com/wp-content/uploads/2024/01/20240113_170206.jpg';
+        const imageUrl = 'https://www.icecric.news/wp-content/uploads/2023/03/Virat-Kohli-1.webp';
 
         // Fetch the image using Playwright's request API
         const response = await page.request.get(imageUrl);
@@ -110,5 +113,39 @@ test.describe('Automation - Working With Elements', () => {
             console.log(`Failed to download the image. Status code: ${response.status()}`);
         }
     })
+
+    test('Direct Download and assert example 2', async ({ page }) => {
+
+        // Define the image URL
+        const imageUrl = 'https://m.media-amazon.com/images/I/71GXqew8QuL._SX522_.jpg';
+
+        // Fetch the image using Playwright's request API
+        const response = await page.request.get(imageUrl);
+
+        // Ensure the response is OK
+        if (response.ok()) {
+            // Get the image buffer
+            const buffer = await response.body();
+
+            // Define the 'downloads' folder path inside your project folder
+            const downloadsFolder = path.join(__dirname + "/../..", 'downloads');
+            // Check if 'downloads' folder exists, if not, create it
+            if (!fs.existsSync(downloadsFolder)) {
+                fs.mkdirSync(downloadsFolder, { recursive: true });
+            }
+
+            // Define the file name and path to save the image inside the 'downloads' folder
+            const savePath = path.join(downloadsFolder, 'parrot.jpg');
+
+            // Write the buffer to a file
+            fs.writeFileSync(savePath, buffer);
+            console.log(`Image downloaded successfully and saved to ${savePath}`);
+        } else {
+            console.log(`Failed to download the image. Status code: ${response.status()}`);
+        }
+    })
+
+
+    
 
 })

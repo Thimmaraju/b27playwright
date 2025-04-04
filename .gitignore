@@ -6,3 +6,6 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 package-lock.json
+allure-report
+allure-results
+tests/screenshots

@@ -23,9 +23,9 @@ test('Verify login with vaid credentials', async () => {
 
 
   
-  await page.locator('//input[@placeholder="Username"]').fill(creds[0]);
+  await page.locator('//input[@placeholder="Username"]').fill(process.env.ORG_USERNAME);
 
-  await page.locator("input[type='password']").type(creds[1]);
+  await page.locator("input[type='password']").type(process.env.ORG_PASSWORD);
 
   await page.locator("button[type='submit']").click()
 

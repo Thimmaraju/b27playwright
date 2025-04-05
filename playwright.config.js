@@ -9,6 +9,8 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+require('dotenv').config();
+
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -51,6 +53,13 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+
+    {
+      name: "setup",
+      use: { ...devices['Desktop Chrome'], 
+        channel: 'chrome'  },
+      testMatch: /.*\.setup\.js/,
+    },
     //  {
     //   name: 'chromium',
     //   use: { ...devices['Desktop Chrome'] },
@@ -86,7 +95,9 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], channel: 'chrome', 
             
        // viewport : {width: 375, height: 667}
+       storageState: ".auth/user.json",
       },
+      dependencies: ["setup"],
     },
   ],
 

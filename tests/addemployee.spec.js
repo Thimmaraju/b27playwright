@@ -6,26 +6,28 @@ import { test, expect } from '@playwright/test';
  
     
        const  empdata = ["Chaitra", "J", 34, "34"]
+
+   await page.goto("/web/index.php/pim/addEmployee")
     
-    // launch the url 
-    await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+   //  // launch the url 
+   //  await page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
     
-    //filling username 
-    await page.locator("input[name='username']").fill("Admin") //60sec 
+   //  //filling username 
+   //  await page.locator("input[name='username']").fill("Admin") //60sec 
     
-    //filling password
-    await page.locator("input[type='password']").fill("admin123")
-    // click on login button
-    await page.locator("button[type='submit']").click()
+   //  //filling password
+   //  await page.locator("input[type='password']").fill("admin123")
+   //  // click on login button
+   //  await page.locator("button[type='submit']").click()
     
-    //Whether we are navigated to dashbaord page or not 
-    await expect.soft(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
+   //  //Whether we are navigated to dashbaord page or not 
+   //  await expect.soft(page).toHaveURL("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
     
-    // click on PIM
-    await page.locator('//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a').click()
+   //  // click on PIM
+   //  await page.locator('//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a').click()
     
-    // click on add employee
-    await page.locator("//a[normalize-space(text())='Add Employee']").click()
+   //  // click on add employee
+   //  await page.locator("//a[normalize-space(text())='Add Employee']").click()
     
     // fill firstname 
     await page.locator("(//label[normalize-space(text())='Employee Full Name']/following::input)[1]").fill(empdata[0])

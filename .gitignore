@@ -9,3 +9,4 @@ package-lock.json
 allure-report
 allure-results
 tests/screenshots
+.env

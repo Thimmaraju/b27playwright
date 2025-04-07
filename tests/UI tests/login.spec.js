@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-import logindata from "../testData/login.json"
+import logindata from "../../testData/login.json"
 
 let page
 test.beforeEach( async ({browser})=>{

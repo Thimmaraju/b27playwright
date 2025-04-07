@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-import {LoginPage} from "../pageobjects/LoginPage"
+import {LoginPage} from "../../pageobjects/LoginPage"
 
-import { DashboardPage } from "../pageobjects/DashboardPage"
+import { DashboardPage } from "../../pageobjects/DashboardPage"
 
-import {jobTitlePage} from "../pageobjects/admin/JobTitlePage"
+import {jobTitlePage} from "../../pageobjects/admin/JobTitlePage"
 
-import addjobtitledata from "../testData/admindata/jobtitle.json"
+import addjobtitledata from "../../testData/admindata/jobtitle.json"
 
-import logindata from "../testData/login.json"
+import logindata from "../../testData/login.json"
 
 
 test('Verify Add Jobtitle - POM', async ({ page }) => {

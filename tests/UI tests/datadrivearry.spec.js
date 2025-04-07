@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import data from "../testData/login.json"
-import addjobtitledata from "../testData/admindata/jobtitle.json"
+import data from "../../testData/login.json"
+import addjobtitledata from "../../testData/admindata/jobtitle.json"
 
 
   const Jobtitles  = ["CEO I", "COO I", "CFO I" ]

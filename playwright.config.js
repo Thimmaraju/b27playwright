@@ -95,9 +95,9 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], channel: 'chrome', 
             
        // viewport : {width: 375, height: 667}
-       storageState: ".auth/user.json",
+       //storageState: ".auth/user.json",
       },
-      dependencies: ["setup"],
+     // dependencies: ["setup"],
     },
   ],
 

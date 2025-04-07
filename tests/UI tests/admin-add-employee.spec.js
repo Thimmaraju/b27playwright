@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-import {LoginPage } from '../pageobjects/LoginPage';
-import {DashboardPage} from '../pageobjects/DashboardPage';
-import {EmployeePage} from '../pageobjects/PIM/EmployeePage';
+import {LoginPage } from '../../pageobjects/LoginPage';
+import {DashboardPage} from '../../pageobjects/DashboardPage';
+import {EmployeePage} from '../../pageobjects/PIM/EmployeePage';
 
 
 test('Verify Admin Can Add Employee', async ({ page }) => {

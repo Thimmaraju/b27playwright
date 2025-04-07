@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-import {LoginPage} from "../pageobjects/LoginPage"
+import {LoginPage} from "../../pageobjects/LoginPage"
 
-import logindata from "../testData/login.json"
+import logindata from "../../testData/login.json"
 
 
 let page

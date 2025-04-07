@@ -50,7 +50,7 @@ test('Verify Get Employees API', async ({ request }) => {
 })
 
 
-test("verify create employee API", async  ({ request }) =>{
+test("verify create employee API ", async  ({ request }) =>{
 
     const url = "/web/index.php/api/v2/pim/employees"
  
@@ -85,4 +85,31 @@ test("verify create employee API", async  ({ request }) =>{
      fs.writeFileSync("apiresponses/postres.txt", JSON.stringify(responseBody, null, 2));
  
  })
+
+ test('Verify Get Employees API another example', async ({ request }) => {
+
+    // const headers = {
+    //     "Cookie": "orangehrm=cgp3htta413g9ttgrk8353ttkr"
+    // };
+
+
+    const getALlEmployees = await request.get(
+        'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/pim/employees?limit=50&offset=0&model=detailed&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC',
+        {
+          headers: {
+            "Cookie": "orangehrm=cgp3htta413g9ttgrk8353ttkr"
+          }
+        }
+      );
+
+    expect(getALlEmployees.status()).toBe(200);
+
+    const responsebody = await getALlEmployees.json()
+
+   // expect(responsebody.data[0].empNumber).toBe(104)
+
+
+
+})
+
  

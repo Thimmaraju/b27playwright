@@ -54,12 +54,12 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
 
-    {
-      name: "setup",
-      use: { ...devices['Desktop Chrome'], 
-        channel: 'chrome'  },
-      testMatch: /.*\.setup\.js/,
-    },
+    // {
+    //   name: "setup",
+    //   use: { ...devices['Desktop Chrome'], 
+    //     channel: 'chrome'  },
+    //   testMatch: /.*\.setup\.js/,
+    // },
     //  {
     //   name: 'chromium',
     //   use: { ...devices['Desktop Chrome'] },
